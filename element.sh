@@ -5,5 +5,12 @@ then
   echo "Please provide an element as an argument."
 else
   ELEMENT=$($PSQL "SELECT * FROM elements WHERE atomic_number = $1;")
-  echo $ELEMENT
+  
+  if [[ -z $ELEMENT ]]
+  then
+    echo "I could not find that element in the database."
+  else
+    echo $ELEMENT
+  fi
+  
 fi
